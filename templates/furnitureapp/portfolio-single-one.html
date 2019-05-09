@@ -1,0 +1,79 @@
+{% extends 'furnitureapp/base.html' %}
+{% block page %}Wooden Sofa{% endblock %}
+{% block middle %}Project Single 01{% endblock %}
+{% block body %}
+ <!--Project Details Section-->
+    <section class="project-details">
+    	<div class="auto-container">
+
+            <!--Project Images-->
+            <div class="project-images">
+            	<div class="row clearfix">
+                	<!--Image Column-->
+                    {% for img in furnitureimg %}
+                        {% if img.index == 1 %}
+                    <div class="image-column col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                    	<figure class="image-box"><a href="/static/media/{{ img.furimg.name }}" class="lightbox-image" title="Image Caption Here"><img src="/static/media/{{ img.furimg.name }}" alt=""></a></figure>
+                    </div>
+                    <!--Image Column-->
+                        {% elif img.index == 2 %}
+                    <div class="image-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    	<figure class="image-box"><a href="/static/media/{{ img.furimg.name }}" class="lightbox-image" title="Image Caption Here"><img src="/static/media/{{ img.furimg.name }}" alt=""></a></figure>
+                    </div>
+                        {% else %}
+
+                    <!--Image Column-->
+                    <div class="image-column col-md-4 col-sm-6 col-xs-12">
+                    	<figure class="image-box"><a href="/static/media/{{ img.furimg.name }}" class="lightbox-image" title="Image Caption Here"><img src="/static/media/{{ img.furimg.name }}" alt=""></a></figure>
+                    </div>
+                        {% endif %}
+
+                    <!--Image Column-->
+
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <!--Project Content-->
+            {% for tit in furnitureInfo %}
+            <div class="project-content">
+            	<h2>{{ tit.title }}</h2>
+            	<div class="row clearfix">
+                	<!--Content Column-->
+                    <div class="content-column col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    	<div class="text">{{ tit.descirbe }}</div>
+                        <div class="social-links">
+                        	<a href="#"><span class="fa fa-facebook-f"></span></a>
+                            <a href="#"><span class="fa fa-twitter"></span></a>
+                            <a href="#"><span class="fa fa-dribbble"></span></a>
+                            <a href="#"><span class="fa fa-google-plus"></span></a>
+                            <a href="#"><span class="fa fa-skype"></span></a>
+                        </div>
+                    </div>
+
+                    <!--Info Column-->
+                    <div class="info-column col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    	<ul class="proj-info">
+                        	<li><strong>Category :</strong>  {{ tit.tag }}</li>
+                            <li><strong>Client :</strong>  {{ tit.author }}</li>
+                            <li><strong>Date :</strong>  {{ tit.pub_date|date:'d m,Y' }}</li>
+                            <li><strong>Link :</strong>  {{ tit.tagweb }}</li>
+                            <li class="rating"><strong>Rating :</strong>  <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star-half-empty"></span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Post Nav -->
+            <div class="post-nav clearfix">
+            	<a href="#" class="prev-post pull-left"><span class="fa fa-angle-left"></span> &ensp;&ensp;Previous Post</a>
+                <a href="#" class="next-post pull-right">Next Post &ensp;&ensp;<span class="fa fa-angle-right"></span></a>
+                <a href="{% url 'furnitureapp:portfoli' %}" class="all-post"><span class="fa fa-th-list"></span></a>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

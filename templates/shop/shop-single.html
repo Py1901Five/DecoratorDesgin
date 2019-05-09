@@ -1,0 +1,226 @@
+{% extends 'shop/shop.html' %}
+
+{% block title %}
+    详情页
+{% endblock %}
+
+   
+{% block body %}
+
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(/static/images/background/bg-page-title-1.jpg);">
+        <div class="auto-container">
+            <h1>Single Shop</h1>
+        </div>
+    </section>
+
+    <!--Page Info-->
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>Single Shop</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'shop:shop' %}">Shop</a></li>
+                    <li>Single Shop</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Sidebar Page-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Content Side-->
+                <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                    <!--Product Details Section-->
+                    <section class="products-section product-details no-padd-top no-padd-bottom">
+                        <!--Basic Details-->
+                        <div class="basic-details">
+                            <div class="row clearfix">
+                                <div class="image-column col-md-5 col-sm-6 col-xs-12">
+                                    <figure class="image-box"><img class="img-responsive" src="/static/media/{{ product.image }}" alt=""></figure>
+                                </div>
+                                <div class="info-column col-md-7 col-sm-6 col-xs-12">
+                                    <div class="details-header">
+                                        <h4>{{ product.name }} </h4>
+                                        <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="txt">({{ product.review_set.count }} Reviews)</span></div>
+                                        <div class="item-price">$ {{ product.price }}</div>
+
+                                    </div>
+
+                                    <div class="text">
+                                        <p>{{ product.describe }}</p>
+                                    </div>
+
+                                    <div class="clearfix options">
+                                        <form action="{% url 'shop:add_cart' product.id %}"></form>
+                                        <div class="pull-left padd-right-20"><a href="{% url 'shop:shopping_cart' %}" class="theme-btn btn-style-one">Add to Cart</a></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!--Basic Details-->
+
+                        <!--Product Info Tabs-->
+                        <div class="product-info-tabs">
+
+                            <!--Product Tabs-->
+                            <div class="prod-tabs" id="product-tabs">
+
+                                <!--Tab Btns-->
+                                <div class="tab-btns clearfix">
+                                    <a href="#" class="tab-btn active-btn">Reviews ( {{ product.review_set.count }} )</a>
+                                </div>
+
+                                <!--Tabs Container-->
+                                <div class="tabs-container">
+
+                                    <!--Tab / Active Tab-->
+                                    <div class="tab active-tab" id="prod-reviews">
+
+                                        <!--Reviews Container-->
+                                        <div class="reviews-container">
+
+                                            {% for review in product.review_set.all %}
+                                            <!--Reviews-->
+                                            <article class="review-box clearfix">
+                                                <figure class="rev-thumb"><img src="/static/media/{{ review.user.image }}" alt=""></figure>
+                                                <div class="rev-content">
+                                                    <div class="rev-header clearfix">
+                                                    	<h4>{{ review.user.name }}</h4>
+                                                        <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
+                                                    </div>
+                                                    <div class="rev-info">{{ review.date }}</div>
+                                                    <div class="rev-text">{{ review.content }}</div>
+                                                </div>
+                                            </article>
+                                            {% endfor %}
+
+                                        </div>
+
+                                        <!--Add Review-->
+                                        <div class="add-review">
+                                            <div class="sec-title medium"><h2>Add Review</h2></div>
+
+                                            <form method="post" action="{% url 'shop:review' product.id %}">
+                                                {% csrf_token %}
+                                            	<div class="row clearfix">
+                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                        <label>Your Rating </label>
+
+                                                        <ul class="rating">
+                                                            <input class="quantity-spinner form-control" type="text" value="1" name="stars">
+{#                                                            <li><a href="#" class="rate-box" title="2 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span></a></li>#}
+{#                                                            <li><a href="#" class="rate-box" title="3 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"> </span> <span class="fa fa-star"></span></a></li>#}
+{#                                                            <li><a href="#" class="rate-box" title="4 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></a></li>#}
+{#                                                            <li><a href="#" class="rate-box" title="5 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></a></li>#}
+                                                        </ul>
+                                                    </div>
+                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                        <textarea name="content" placeholder="Review Comments"></textarea>
+                                                    </div>
+                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                        <button type="submit" class="theme-btn hvr-bounce-to-right">Add Review</button>
+                                                    </div>
+                                            	</div>
+                                            </form>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div><!--End Content Side-->
+
+
+
+                <!--Sidebar-->
+                <div class="sidebar-side col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <aside class="sidebar">
+
+                        <!-- Search Form todo 搜索功能-->
+                        <div class="widget search-box sidebar-widget">
+
+                            <form method="post" action="{% url 'shop:search' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="search" name="product_name" value="" placeholder="商品名称">
+                                    <button type="submit"><span class="icon fa fa-search"></span></button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <!-- Popular Categories -->
+                        <div class="widget popular-categories sidebar-widget">
+                            <div class="sidebar-title"><h3>Product Categories</h3></div>
+
+                            <ul class="list-three">
+                                {% for category in categories %}
+                                    <li><a href="{% url 'shop:category' category.id %}">{{ category.name }} ({{ category.product_set.count }})</a></li>
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+
+                        <!-- Price Filter -->
+                        <div class="widget rangeslider-widget sidebar-widget">
+                            <div class="sidebar-title"><h3>Filter By Price</h3></div>
+
+                            <div class="range-slider-price" id="range-slider-price"></div>
+
+                            <br>
+                            <div class="form-group">
+                                <form action="{% url 'shop:price_filter' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" class="val-box" id="min-value-rangeslider" name="minvalue">
+                                    <input type="text" class="val-box" id="max-value-rangeslider" name="maxvalue">
+                                    <button type="submit">Filter ($)</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <!-- Best Sellers -->
+                        <div class="widget best-sellers sidebar-widget">
+                        	<div class="sidebar-title"><h3>Latest Products</h3></div>
+
+                            {% for product in latest_products %}
+                                <div class="item">
+                                <div class="post-thumb"><a href="{% url 'shop:shop_single' product.id %}"><img src="/static/media/{{ product.image }}" alt=""></a></div>
+                                <h4><a href="{% url 'shop:shop_single' product.id %}">{{ product.name }}</a></h4>
+                                <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
+                                <div class="item-price">$ {{ product.price }} <span class="strike-through">$ {{ product.price|add:51 }}</span></div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- Popular Tags -->
+                        <div class="widget sidebar-widget popular-tags">
+
+                            <div class="sidebar-title"><h3>产品标签</h3></div>
+                            {% for tag in tags %}
+                                <a href="{% url 'shop:tag' tag.id %}">{{ tag.name }}</a>
+                            {% endfor %}
+
+                        </div>
+
+                    </aside>
+                </div><!--End Sidebar-->
+
+            </div>
+        </div>
+    </div>
+{% endblock %}}

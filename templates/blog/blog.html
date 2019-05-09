@@ -1,0 +1,123 @@
+{% extends 'blog/base_blog.html' %}
+{% block title %}
+博客
+{% endblock %}
+
+
+{% block stylesheel %}
+
+{% endblock %}
+
+
+{% block right %}
+<section class="page-title" style="background-image: url('/static/images/background/bg-page-title-1.jpg')">
+        <div class="auto-container">
+            <h1>Blog Standard</h1>
+        </div>
+    </section>
+
+    <!--Page Info-->
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>Blog Standard</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'blog:total' %}">Blog</a></li>
+                    <li>Blog Standard</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block leftcontent %}
+<div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                    <!--News Section-->
+                    <section class="news-section list-view no-padd-top no-padd-bottom">
+
+                        <!--News Style One-->
+
+                        {% for a in articles %}
+                            <div class="news-style-one">
+                                <div class="inner-box">
+                                    <div class="row clearfix">
+
+                                        <div class="image-column col-md-5 col-sm-6 col-xs-12">
+                                            <figure class="image-box"><img style="height: 250px;width: 370px;" src="/static/media/{{ a.aBackgroundImage }}" alt="文章配图"><a class="overlay-link" href="{% url 'blog:single' a.id %}"><span class="icon flaticon-plus-1"></span></a></figure>
+                                        </div>
+                                        <div class="content-column col-md-7 col-sm-6 col-xs-12">
+                                            <div class="content">
+                                                <h3><a href="{% url 'blog:single' a.id %}"> {{ a.aTitle }}</a></h3>
+                                                <ul class="post-meta clearfix">
+                                                    <li><a><span class="icon fa fa-clock-o"></span> {{ a.aPublicTime }}</a></li>
+                                                    <li><a href="{% url 'blog:see' %}?type=type&value={{ a.aType.id }}"><span class="icon fa fa-tags"></span> {{ a.aType }}</a></li>
+                                                    <li><a><span class="icon fa fa-eye"></span> {{ a.aReadNum }}</a></li>
+{#                                                    <li><a><span class="icon fa fa-comments"></span></a></li>#}
+                                                </ul>
+                                                <div class="text">{{ a.aContent|slice:100 }} </div>
+                                                <br>
+                                                    <div class="author-info">
+                                                        <figure class="author-thumb"><img style="width: 50px;height: 50px;" src="/static/media/{{ a.aAuthor.uheaderImg }}" alt="作者图"></figure>
+                                                        <h4>{{ a.aAuthor.uName }}</h4>
+                                                        <div class="designation">Team Leader</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                             </div>
+                        {% endfor %}
+
+
+
+
+
+                        <!-- Styled Pagination -->
+                        <div class="styled-pagination padd-top-20 text-left">
+                            <ul>
+{#                                <li><a class="prev" href="#"><span class="fa fa-angle-left"></span></a></li>#}
+                                {% if type %}
+                                    <li><a href="?page=1&type={{ type }}&value={{ value }}" >首页</a></li>
+                                {% else %}
+                                    <li><a href="?page=1" >首页</a></li>
+                                {% endif %}
+
+
+                                {% if page.has_previous %}
+                                    {% if type %}
+                                        <li><a href="?page={{ page.number|add:-1 }}&type={{ type }}&value={{ value }}" >{{ page.number|add:-1 }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ page.number|add:-1 }}" >{{ page.number|add:-1 }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if type %}
+                                    <li><a href="?page={{ page.number }}&type={{ type }}&value={{ value }}" class="active">{{ page.number }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ page.number }}" class="active">{{ page.number }}</a></li>
+                                {% endif %}
+
+
+                                {% if page.has_next %}
+                                    {% if type %}
+                                        <li><a href="?page={{ page.number|add:1 }}&type={{ type }}&value={{ value }}">{{ page.number|add:1 }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ page.number|add:1 }}">{{ page.number|add:1 }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                                {% if type %}
+                                        <li><a href="?page={{ p.num_pages }}&type={{ type }}&value={{ value }}">尾页</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ p.num_pages }}">尾页</a></li>
+                                {% endif %}
+                                </ul>
+                        </div>
+
+                    </section>
+
+                </div><!--End Content Side-->
+
+{% endblock %}

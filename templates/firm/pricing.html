@@ -1,0 +1,76 @@
+{% extends 'firm/base.html' %}
+
+{% block title %}
+    报价页
+{% endblock %}
+
+{% block body %}
+    <section class="page-title" style="background-image:url(/static/images/background/bg-page-title-1.jpg);">
+        <div class="auto-container">
+            <h1>服务  报价</h1>
+        </div>
+    </section>
+
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>服务报价</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'firm:index' %}">Pages</a></li>
+                    <li>服务报价</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+    	<div class="auto-container">
+
+            <div class="sec-title medium">
+            	<h2>团队服务标准</h2>
+                <div class="desc-text">
+
+                </div>
+            </div>
+
+        	<div class="row clearfix">
+
+                {% for pricing in pricings %}
+                    <div class="pricing-column col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                	<div class="inner-box">
+                    	<div class="plan-title">{{ pricing.title }}</div>
+                        <div class="price-header"><span class="price"><sup>$</sup>{{ pricing.pricing }}</span> <sub>/ Month</sub></div>
+                        <div class="lower-content">
+                        	<ul class="spec-list">
+                                <li>{{ pricing.text1 }}</li>
+                                <li>{{ pricing.text2 }}</li>
+                                <li>{{ pricing.text3 }}</li>
+                                <li>{{ pricing.text4 }}</li>
+                            </ul>
+
+                            <a href="#" class="theme-btn btn-style-two">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <section class="call-to-action-one">
+    	<div class="auto-container">
+        	<div class="clearfix">
+
+                <div class="pull-left">
+                	<h3>我们为每位客户提供全面而具体的解决方案，并提供我们的后续服务。</h3>
+                </div>
+                <div class="pull-right">
+                	<a href="" class="theme-btn btn-style-two">立即购买</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,254 @@
+{% extends 'firm/base.html' %}
+
+{% block title %}
+    团队详情页
+{% endblock %}
+
+{% block body %}
+    <section class="page-title" style="background-image:url(/static/images/background/bg-page-title-1.jpg);">
+        <div class="auto-container">
+            <h1>精英团队</h1>
+        </div>
+    </section>
+
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>精英团队</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Pages</a></li>
+                    <li>Elite Team</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Sidebar-->
+                <div class="sidebar-side col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar">
+
+                        <!--Sidebar Widget / Boxed Nav-->
+                        <div class="widget sidebar-widget styled-nav">
+                            <nav class="nav-outer">
+                                <ul>
+                                    {% for parent in parents %}
+                                        {% if id == parent.id %}
+                                            <li class="current" ><a href="{% url 'firm:team-single' parent.id %}">{{ parent.name }}</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'firm:team-single' parent.id %}">{{ parent.name }}</a></li>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    
+                                </ul>
+
+                            </nav>
+                        </div>
+
+                        <!--Sidebar Widget / Downloads-->
+                        <div class="widget sidebar-widget downloads">
+                            <div class="sidebar-title"><h3>Our Brochures</h3></div>
+                            <ul>
+                                <li><a href="#"><span class="icon fa fa-file-pdf-o"></span> Download.Pdf</a></li>
+                                <li><a href="#"><span class="icon fa fa-file-word-o"></span> Download.Doc</a></li>
+                            </ul>
+                        </div>
+
+                        <!--Sidebar Widget / Testimonials-->
+                        <div class="widget sidebar-widget testimonials">
+                            <div class="sidebar-title"><h3>Testimonials</h3></div>
+                            <div class="single-item-carousel">
+
+                                <!--Slide Item-->
+                                <div class="slide-item">
+                                    <div class="upper-content">
+                                        <div class="text">
+                                            他们按时组织我的项目，组织良好，工程师团队经验丰富。
+                                        </div>
+                                    </div>
+                                    <div class="testi-info">
+                                        <figure class="author-thumb img-circle"><img class="img-circle" src="/static/images/resource/author-thumb-4.jpg" alt=""></figure>
+                                        <h4>马克.威廉 - <span class="designation">中国移动上海分公司 CEO</span> </h4>
+                                        <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
+                                    </div>
+                                </div>
+
+                                <!--Slide Item-->
+                                <div class="slide-item">
+                                    <div class="upper-content">
+                                        <div class="text">我们享受到了专业，周到，舒适的服务。而且设计产品与实际效果都很不错。</div>
+                                    </div>
+                                    <div class="testi-info">
+                                        <figure class="author-thumb img-circle"><img class="img-circle" src="/static/images/resource/user-1.jpg" alt=""></figure>
+                                        <h4>刘小康 - <span class="designation">香港著名设计师</span> </h4>
+                                        <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
+                                    </div>
+                                </div>
+
+                                <!--Slide Item-->
+                                <div class="slide-item">
+                                    <div class="upper-content">
+                                        <div class="text">
+                                            不错的团队，尤其是其专业的设计功底。我们很感谢他们的帮助，让我们的顾客感受非凡。
+                                        </div>
+                                    </div>
+                                    <div class="testi-info">
+                                        <figure class="author-thumb img-circle"><img class="img-circle" src="/static/images/resource/user-2.png" alt=""></figure>
+                                        <h4> 吕珊洲- <span class="designation">上海市艾美养生有限公司 CEO</span> </h4>
+                                        <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </aside>
+                </div><!--End Sidebar-->
+
+                <!--Content Side-->
+                <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <!--Team Single-->
+                    <section class="team-member-single">
+
+                        <!--Basic Details-->
+                        <div class="basic-details">
+                            <div class="row clearfix">
+                                <div class="image-column col-md-4 col-sm-6 col-xs-12">
+                                    <figure class="image-box"><img class="img-responsive" src="{{ user.image }}" alt=""></figure>
+                                </div>
+                                <div class="info-column col-md-8 col-sm-12 col-xs-12">
+                                    <div class="info-header">
+                                        <h2 class="member-title">{{ user.name }}</h2>
+                                        <div class="designation">{{ user.profession }}</div>
+                                    </div>
+
+                                    <div class="quoted-text">He is a Team Leader of Decorators With Over 12 Years of Experience.</div>
+
+                                    <div class="desc-text">{{ user.message }}</div>
+
+                                    <div class="social-links">
+                                        <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                        <a href="#"><span class="fa fa-twitter"></span></a>
+                                        <a href="#"><span class="fa fa-google-plus"></span></a>
+                                        <a href="#"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!--Basic Details-->
+
+                        <!--Educational Details-->
+                        <div class="educational-details">
+                            <div class="sec-title medium"><h2>教育经历</h2></div>
+
+                            <div class="row clearfix">
+
+                                {% for detail in details %}
+                                     <div class="block col-md-6 col-sm-6 col-xs-12">
+                                        <div class="inner-box">
+                                            <div class="icon-box"><span class="fa fa-graduation-cap"></span></div>
+                                            <h3>{{ detail.school }}</h3>
+                                            <div class="text"><span class="theme_color">{{ detail.time }}</span>{{ detail.message }}</div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+
+                        <!--Experties Details-->
+                        <div class="experties">
+                            <div class="sec-title medium"><h2>专业领域</h2></div>
+
+                            <!--Experties Carousel-->
+                            <div class="experties-carousel">
+                                <!--Experties Block-->
+                                <div class="expert-block">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><span class="flaticon-improvement"></span></div>
+                                        <h4>Texture Painting</h4>
+                                        <div class="overlay-box">
+                                            <div class="over-inner">
+                                                <div class="content">精致的人生，需要专业的团队。 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Experties Block-->
+                                <div class="expert-block">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><span class="flaticon-crate"></span></div>
+                                        <h4>Wooden FLooring</h4>
+                                        <div class="overlay-box">
+                                            <div class="over-inner">
+                                                <div class="content">精致的人生，需要专业的团队。 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Experties Block-->
+                                <div class="expert-block">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><span class="flaticon-bright-lightbulb"></span></div>
+                                        <h4>Lighting Works</h4>
+                                        <div class="overlay-box">
+                                            <div class="over-inner">
+                                                <div class="content">精致的人生，需要专业的团队。 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Experties Block-->
+                                <div class="expert-block">
+                                    <div class="inner-box">
+                                        <div class="icon-box"><span class="flaticon-compass"></span></div>
+                                        <h4>Interior</h4>
+                                        <div class="overlay-box">
+                                            <div class="over-inner">
+                                                <div class="content">精致的人生，需要专业的团队。</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                         <!--Contact Now-->
+                        <div class="contact-now">
+                            <div class="sec-title medium"><h2>联系方式</h2></div>
+
+                            <div class="row clearfix">
+                                <!--Column-->
+                                <div class="column col-lg-5 col-md-6 col-sm-6 col-xs-12" style="width: 100%;margin-left: 150px;">
+                                    <div class="info-style-one">
+                                        <ul>
+                                            <li><div class="icon-box"><span class="flaticon-international-delivery"></span></div><h4>地址 :</h4><div class="text">{{ user.addr }}</div></li>
+                                            <li><div class="icon-box"><span class="flaticon-envelope"></span></div><h4>邮箱地址:</h4><div class="text">{{ user.email }}</div></li>
+                                            <li><div class="icon-box"><span class="flaticon-phone-call"></span></div><h4>电话:</h4><div class="text"> {{ user.phone }}</div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </section>
+                </div><!--End Content Side-->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

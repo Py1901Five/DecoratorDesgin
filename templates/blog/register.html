@@ -1,0 +1,28 @@
+{% extends 'blog/base_index.html' %}
+
+
+{% block title %}
+register
+{% endblock %}
+
+
+{% block stylesheel %}
+{% endblock %}
+
+
+{% block blog %}
+    <div style="width: 1000px; margin: 200px auto">
+        <form action="{% url 'blog:register' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            请输入您的账户：<input type="text" name="name" class="form-control">
+            <br>
+            请输入您的密码：<input type="password" name="pwd" class="form-control">
+            <br>
+            请输入您的简介：<input type="text" name="jj" class="form-control">
+            <br>
+            请上传您的头像：<input type="file" name="headerimage">
+            <br>
+            <input type="submit" value="提交" class="btn button">
+        </form>
+    </div>
+{% endblock %}

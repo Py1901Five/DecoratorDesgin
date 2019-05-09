@@ -1,0 +1,178 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+详情
+{% endblock %}
+
+
+{% block stylesheel %}
+
+{% endblock %}
+
+
+{% block right %}
+<section class="page-title" style="background-image: url('/static/images/background/bg-page-title-1.jpg')">
+        <div class="auto-container">
+            <h1>Blog Single Post</h1>
+        </div>
+    </section>
+
+    <!--Page Info-->
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>Blog Single Post</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'blog:total' %}">Blog</a></li>
+                    <li>Blog Single Post</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block leftcontent %}
+<!--Content Side-->
+    <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+        <!--News Section-->
+        <section class="news-section large-image-view blog-details no-padd-top no-padd-bottom">
+            <!--News Style One / Boxed-->
+            {% if arl %}
+                <div class="news-style-one boxed">
+                <div class="inner-box">
+                    <figure class="image-box"><img src="/static/media/{{ arl.aBackgroundImage }}" alt=""></figure>
+                    <div class="content">
+                        <h3><a >{{ arl.aTitle }}</a></h3>
+                        <ul class="post-meta clearfix">
+                            <li><a href="#"><span class="icon fa fa-clock-o"></span> {{ arl.aPublicTime }}</a></li>
+                            <li><a href="{% url 'blog:see' %}?type=type&value={{ arl.aType.id }}"><span class="icon fa fa-tags"></span> {{ arl.aType }}</a></li>
+                            <li><a href="#"><span class="icon fa fa-eye"></span> {{ arl.aReadNum }} Views</a></li>
+{#                            <li><a href="#"><span class="icon fa fa-comments"></span> {{ coms.count }}</a></li>#}
+                        </ul>
+                        <div class="text">
+{#                            <p>Explain to you how all this mistaken idea of denouncing pleasures sed nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. and praising pain was born and I will give the actual teachings.</p>#}
+{#                            <blockquote>Michel ivauedaus rutrum mi utercture aliquamhabitasse platore dictumst. Integer sagittis vulputate  similique sunt in culpa qui officia deserunt.</blockquote>#}
+{#                            <p>We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charm of pleasure of the moment, so blinded by desire, that they cannot foresee the pain ut and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying uts through shrinking from toil and pain  These cases are perfectly simple and easy to distinguish. </p>#}
+                            {{ arl.aContent|safe }}
+                        </div>
+                        <div class="post-bottom clearfix">
+
+                            <ul class="share-options pull-left clearfix">
+                                <li><strong>Did You Like This Post? Share it :</strong></li>
+                                <li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                <li><a href="#"><span class="fa fa-skype"></span></a></li>
+                            </ul>
+
+                            <ul class="post-controls pull-right clearfix">
+{#                                {% if arl.id != articles.all.first.id %}#}
+{#                                    <li><a href="{% url 'blog:single' arl.id|add:-1 %}" class="prev-post"><span class="fa fa-angle-left"></span> &nbsp; Prev</a></li>#}
+{#                                {% endif %}#}
+{#                            {% if arl.id == articles.all.last.id %}#}
+{#                                <li><a href="{% url 'blog:single' arl.id|add:1 %}" class="next-post">Next &nbsp; <span class="fa fa-angle-right"></span></a></li>#}
+{#                            {% endif %}#}
+                                </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+
+
+
+            <div class="sec-title medium"><h2>About Author</h2></div>
+
+            <!--About Author-->
+            <div class="post-author">
+                <div class="inner-box">
+                    <figure class="author-thumb"><img style="height: 100px;width: 100px;" src="/static/media/{{ arl.aAuthor.uheaderImg }}" alt=""></figure>
+                    <h4>{{ arl.aAuthor.uName }}<span class="author-designation">( Author)</span></h4>
+                    <div class="text">{{ arl.aAuthor.uBrief }} </div>
+                </div>
+            </div>
+            {% if coms %}
+                <div class="sec-title medium"><h2>Comments ({{ coms.count }})</h2></div>
+
+            <!--Comments Area-->
+            <div class="comments-area">
+
+                <div class="comment-box">
+
+                    <div class="comment">
+                        <div class="comment-inner">
+                            <div class="author-thumb">
+{#                                <img src="images/resource/author-thumb-5.jpg" alt="">#}
+                            </div>
+                            <div class="comment-header clearfix">
+                                <h4>{{ coms }}</h4>
+                                <div class="comment-info">17 August 2015 at 12.00pm / <a href="#">Reply</a></div>
+                            </div>
+                            <div class="text">Culpa qui officia deserunt mollitia animin id est laborum et seds dolorum seds fuga. uni harum quidem rerum facilis est et expedita ut distinctio. Nam sed libero tempore, cum soluta nobis seds est eligendi optio cumque nihil impedit quo repellendus eligendi optio cumque.</div>
+                        </div>
+                    </div>
+
+                    <div class="comment reply-comment">
+                        <div class="comment-inner">
+                            <div class="author-thumb"><img src="images/resource/author-thumb-6.jpg" alt=""></div>
+                            <div class="comment-header clearfix">
+                                <h4>Vital Meckey</h4>
+                                <div class="comment-info">21 December 2015 at 11.00am / <a href="#">Reply</a></div>
+                            </div>
+                            <div class="text">Idea of denouncing pleasure and praising pains was borns and I will gives you a complete account of the system, and expound the actual teachings of the great seds ut labo explorer of the sed truth, the master-builder of human happiness.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sec-title medium"><h2>Leave a Reply</h2></div>
+
+            <div class="comment-form">
+                        	<!--form-box-->
+                            <div class="form-box default-form">
+                                <div class="contact-form default-form">
+                                    <form method="post" action="contact.html">
+                                        <div class="row clearfix">
+
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="username" value="" placeholder="Your Name ">
+                                            </div>
+
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <input type="email" name="email" value="" placeholder="Email Address " required>
+                                            </div>
+
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="number" value="" placeholder="Phone">
+                                            </div>
+
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" name="website" value="" placeholder="Website">
+                                            </div>
+
+                                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                <textarea name="message" placeholder="Comments "></textarea>
+                                            </div>
+                                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                <button type="submit" class="theme-btn btn-style-two">Post Comment</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+            {% endif %}
+
+
+        </section>
+
+    </div><!--End Content Side-->
+
+{% endblock %}

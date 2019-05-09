@@ -1,0 +1,56 @@
+{% extends 'firm/base.html' %}
+
+{% block title %}
+    团队列表页
+{% endblock %}
+
+{% block body %}
+    <section class="page-title" style="background-image:url(/static/images/background/bg-page-title-1.jpg);">
+        <div class="auto-container">
+            <h1>完美作品的缔造者</h1>
+        </div>
+    </section>
+
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>团队成员</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Pages</a></li>
+                    <li>Team</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section-one">
+    	<div class="auto-container">
+
+            <div class="row clearfix">
+
+                {% for team in team_list %}
+                    <div class="team-member-one col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                	<div class="inner-box">
+                    	<figure class="image-box">
+                            <img src="{{ team.image }}" alt="">
+                            <a href="{% url 'firm:team-single' team.id %}">
+                                <div class="overlay"></div>>
+                            </a>
+                        </figure>
+                        <div class="lower-content">
+                        	<h3><a href="{% url 'firm:team-single' team.id %}">{{ team.name }}</a></h3>
+                            <div class="designation">{{ team.profession }}</div>
+                            <div class="desc-text">{{ team.message }}</div>
+                            <div class="links-box"><a class="theme-btn read-more" href="{% url 'firm:team-single' team.id %}">查看<span class="fa fa-caret-right"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

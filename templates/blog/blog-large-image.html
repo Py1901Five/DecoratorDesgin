@@ -1,0 +1,226 @@
+{% extends 'blog/base_blog.html' %}
+{% block title %}
+大图总览
+{% endblock %}
+
+
+{% block stylesheel %}
+
+{% endblock %}
+
+
+{% block right %}
+<section class="page-title" style="background-image: url('/static/images/background/bg-page-title-1.jpg')">
+        <div class="auto-container">
+            <h1>Blog Large Image</h1>
+        </div>
+    </section>
+
+    <!--Page Info-->
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>Blog Large Image</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'blog:total' %}">Blog</a></li>
+                    <li>Blog Large Image</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block leftcontent %}
+<div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+{#                    <!--News Section-->#}
+{#                    <section class="news-section large-image-view no-padd-top no-padd-bottom">#}
+{##}
+{#                        <!--News Style One / Boxed-->#}
+{#                        <div class="news-style-one boxed">#}
+{#                            <div class="inner-box">#}
+{#                                <figure class="image-box"><img src="/static/images/resource/blog-image-9.jpg" alt=""><a class="overlay-link" href="blog-single.html"><span class="icon flaticon-plus-1"></span></a></figure>#}
+{#                           		<div class="content">#}
+{#                                    <h3><a href="blog-single.html">We Using Only High Quality Paints For Customers</a></h3>#}
+{#                                    <ul class="post-meta clearfix">#}
+{#                                        <li><a href="#"><span class="icon fa fa-clock-o"></span> Aug 21, 2015</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-tags"></span> Painting</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-eye"></span> 55 Views</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-comments"></span> 22 Comments</a></li>#}
+{#                                    </ul>#}
+{#                                    <div class="text">Pleasures and praising pains was born and will give you a completed account of the systems seds, and seds expound the actual teaching of the great explorer the master-builder  Nor again is there anyones who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances of human happiness. </div>#}
+{#                                    <div class="author-info">#}
+{#                                        <figure class="author-thumb"><img src="/static/images/resource/author-thumb-1.jpg" alt=""></figure>#}
+{#                                        <h4>Mark Nicholes</h4>#}
+{#                                        <div class="designation">Team Leader</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <!--News Style One / Boxed-->#}
+{#                        <div class="news-style-one boxed">#}
+{#                            <div class="inner-box">#}
+{#                                <figure class="image-box"><img src="images/resource/blog-image-10.jpg" alt=""><a class="overlay-link" href="blog-single.html"><span class="icon flaticon-plus-1"></span></a></figure>#}
+{#                           		<div class="content">#}
+{#                                    <h3><a href="blog-single.html">We Using Only High Quality Paints For Customers</a></h3>#}
+{#                                    <ul class="post-meta clearfix">#}
+{#                                        <li><a href="#"><span class="icon fa fa-clock-o"></span> Aug 21, 2015</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-tags"></span> Painting</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-eye"></span> 55 Views</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-comments"></span> 22 Comments</a></li>#}
+{#                                    </ul>#}
+{#                                    <div class="text">Pleasures and praising pains was born and will give you a completed account of the systems seds, and seds expound the actual teaching of the great explorer the master-builder  Nor again is there anyones who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances of human happiness. </div>#}
+{#                                    <div class="author-info">#}
+{#                                        <figure class="author-thumb"><img src="images/resource/author-thumb-2.jpg" alt=""></figure>#}
+{#                                        <h4>Mark Nicholes</h4>#}
+{#                                        <div class="designation">Team Leader</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <!--News Style One / Boxed-->#}
+{#                        <div class="news-style-one boxed">#}
+{#                            <div class="inner-box">#}
+{#                                <figure class="image-box"><img src="images/resource/blog-image-11.jpg" alt=""><a class="overlay-link" href="blog-single.html"><span class="icon flaticon-plus-1"></span></a></figure>#}
+{#                           		<div class="content">#}
+{#                                    <h3><a href="blog-single.html">We Using Only High Quality Paints For Customers</a></h3>#}
+{#                                    <ul class="post-meta clearfix">#}
+{#                                        <li><a href="#"><span class="icon fa fa-clock-o"></span> Aug 21, 2015</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-tags"></span> Painting</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-eye"></span> 55 Views</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-comments"></span> 22 Comments</a></li>#}
+{#                                    </ul>#}
+{#                                    <div class="text">Pleasures and praising pains was born and will give you a completed account of the systems seds, and seds expound the actual teaching of the great explorer the master-builder  Nor again is there anyones who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances of human happiness. </div>#}
+{#                                    <div class="author-info">#}
+{#                                        <figure class="author-thumb"><img src="images/resource/author-thumb-1.jpg" alt=""></figure>#}
+{#                                        <h4>Mark Nicholes</h4>#}
+{#                                        <div class="designation">Team Leader</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <!--News Style One / Boxed-->#}
+{#                        <div class="news-style-one boxed">#}
+{#                            <div class="inner-box">#}
+{#                                <figure class="image-box"><img src="images/resource/blog-image-12.jpg" alt=""><a class="overlay-link" href="blog-single.html"><span class="icon flaticon-plus-1"></span></a></figure>#}
+{#                           		<div class="content">#}
+{#                                    <h3><a href="blog-single.html">We Using Only High Quality Paints For Customers</a></h3>#}
+{#                                    <ul class="post-meta clearfix">#}
+{#                                        <li><a href="#"><span class="icon fa fa-clock-o"></span> Aug 21, 2015</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-tags"></span> Painting</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-eye"></span> 55 Views</a></li>#}
+{#                                        <li><a href="#"><span class="icon fa fa-comments"></span> 22 Comments</a></li>#}
+{#                                    </ul>#}
+{#                                    <div class="text">Pleasures and praising pains was born and will give you a completed account of the systems seds, and seds expound the actual teaching of the great explorer the master-builder  Nor again is there anyones who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances of human happiness. </div>#}
+{#                                    <div class="author-info">#}
+{#                                        <figure class="author-thumb"><img src="images/resource/author-thumb-2.jpg" alt=""></figure>#}
+{#                                        <h4>Mark Nicholes</h4>#}
+{#                                        <div class="designation">Team Leader</div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <!-- Styled Pagination -->#}
+{#                        <div class="styled-pagination padd-top-20 text-left">#}
+{#                            <ul>#}
+{#                                <li><a class="prev" href="#"><span class="fa fa-angle-left"></span></a></li>#}
+{#                                <li><a href="#" class="active">1</a></li>#}
+{#                                <li><a href="#">2</a></li>#}
+{#                                <li><a href="#">3</a></li>#}
+{#                                <li><a class="next" href="#"><span class="fa fa-angle-right"></span></a></li>#}
+{#                            </ul>#}
+{#                        </div>#}
+{##}
+{#                    </section>#}
+
+                    <!--News Section-->
+
+                    <section class="news-section large-image-view no-padd-top no-padd-bottom">
+                        {% for a in articles %}
+                            <!--News Style One / Boxed-->
+                            <div class="news-style-one boxed">
+                                <div class="inner-box">
+                                    <figure class="image-box"><img style="width: 100%;" src="/static/media/{{ a.aBackgroundImage }}"
+                                                                   alt="大图" style="width: 695px;">
+                                        <a class="overlay-link" href="{% url 'blog:single' a.id %}"><span class="icon flaticon-plus-1"></span></a></figure>
+                                    <div class="content">
+                                        <h3><a href="blog-single1.html">{{ a.aTitle }}</a></h3>
+                                        <ul class="post-meta clearfix">
+                                            <li><a href="#"><span class="icon fa fa-clock-o"></span> {{ a.aPublicTime }}</a></li>
+                                            <li><a href="#"><span class="icon fa fa-tags"></span> {{ a.aType }}</a></li>
+                                            <li><a href="#"><span class="icon fa fa-eye"></span> {{ a.aReadNum }} Views</a></li>
+                                            <li><a href="#"><span class="icon fa fa-comments"></span> 22 Comments</a></li>
+                                        </ul>
+                                        <div class="text"> {{ a.aContent|slice:200 }} </div>
+                                        <div class="author-info">
+                                            <figure class="author-thumb"><img src="/static/media/{{ a.aAuthor.uheaderImg }}" alt=""></figure>
+                                            <h4>{{ a.aAuthor.uName }}</h4>
+                                            <div class="designation">Team Leader</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                            none
+                        {% endfor %}
+
+
+
+                        <!--News Style One-->
+
+{#                        {% for a in articles %}#}
+{#                            <div class="news-style-one">#}
+{#                                <div class="inner-box">#}
+{#                                    <div class="row clearfix">#}
+{##}
+{#                                        <div class="image-column col-md-5 col-sm-6 col-xs-12">#}
+{#                                            <figure class="image-box"><img style="height: 250px;width: 370px;" src="/static/media/{{ a.aBackgroundImage }}" alt="文章配图"><a class="overlay-link" href="{% url 'blog:single' a.id %}"><span class="icon flaticon-plus-1"></span></a></figure>#}
+{#                                        </div>#}
+{#                                        <div class="content-column col-md-7 col-sm-6 col-xs-12">#}
+{#                                            <div class="content">#}
+{#                                                <h3><a href="{% url 'blog:single' a.id %}"> {{ a.aTitle }}</a></h3>#}
+{#                                                <ul class="post-meta clearfix">#}
+{#                                                    <li><a><span class="icon fa fa-clock-o"></span> {{ a.aPublicTime }}</a></li>#}
+{#                                                    <li><a href="{% url 'blog:see' %}?type=type&value={{ a.aType.id }}"><span class="icon fa fa-tags"></span> {{ a.aType }}</a></li>#}
+{#                                                    <li><a><span class="icon fa fa-eye"></span> {{ a.aReadNum }}</a></li>#}
+{#                                                    <li><a><span class="icon fa fa-comments"></span> 22 Comments</a></li>#}
+{#                                                </ul>#}
+{#                                                <div class="text">{{ a.aContent|slice:100 }} </div>#}
+{#                                                <br>#}
+{#                                                    <div class="author-info">#}
+{#                                                        <figure class="author-thumb"><img style="width: 50px;height: 50px;" src="/static/media/{{ a.aAuthor.uheaderImg }}" alt="作者图"></figure>#}
+{#                                                        <h4>{{ a.aAuthor.uName }}</h4>#}
+{#                                                        <div class="designation">Team Leader</div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                </div>#}
+{#                             </div>#}
+{#                        {% endfor %}#}
+{##}
+
+
+
+
+                        <!-- Styled Pagination -->
+                        <div class="styled-pagination padd-top-20 text-left">
+                            <ul>
+                                <li><a class="prev" href="#"><span class="fa fa-angle-left"></span></a></li>
+                                <li><a href="#" class="active">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a class="next" href="#"><span class="fa fa-angle-right"></span></a></li>
+                            </ul>
+                        </div>
+
+                    </section>
+
+                </div><!--End Content Side-->
+
+{% endblock %}

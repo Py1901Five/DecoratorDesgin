@@ -1,0 +1,53 @@
+{% extends 'blog/base_blog.html' %}
+
+
+{% block title %}
+发表
+{% endblock %}
+
+
+{% block stylesheel %}
+    <script src="/static/tiny_mce/tiny_mce.js"></script>
+    <script>
+    tinyMCE.init({
+        'mode': 'textareas',
+        'theme': 'advanced',
+        'width':800,
+        'height': 500,
+    })
+    </script>
+{% endblock %}
+
+
+{% block blog %}
+    <div style="width: 1000px; margin: 200px auto">
+        <form action="{% url 'blog:public' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <big>
+                请输入您的题目：<input class="text form-control" style="height: 30px;" type="text" name="title">
+            <br>
+            请输入您的内容：<textarea class="text  form-control" style="height: 30px;" name="content" ></textarea>
+            请上传您的图片：<input type="file" name="articleImage">
+            <br>
+            请选择您的分类：
+            {% for t in types %}
+                <input type="radio" name="type" value="{{ t.id }}"
+                 class="radio radio-inline " style="width: 15px;">{{ t.tName }}
+            {% empty %}
+                可以不选
+            {% endfor %}
+            <br>
+            请选择您的标签：
+            {% for tag in tags %}
+                <input class="checkbox checkbox-inline" style="width: 15px;height: 80px;" type="checkbox" name="tags" value="{{ tag.id }}">{{ tag.tName }}
+            {% empty %}
+                可以不选
+            {% endfor %}
+            <br>
+            <input type="submit" class="btn btn-lg" value="提交">
+            </big>
+
+        </form>
+    </div>
+
+{% endblock %}

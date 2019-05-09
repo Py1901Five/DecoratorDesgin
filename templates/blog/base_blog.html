@@ -1,0 +1,248 @@
+{% extends 'blog/base_index.html' %}
+{% block title %}
+{% endblock %}
+{% block stylesheel %}
+
+{% endblock %}
+{% block blog %}
+{#<div class="id" style="width: 100px;height: 100px;background-color: red;">#}
+    <!-- Hidden Navigation Bar -->
+    <section class="hidden-bar right-align">
+
+        <div class="hidden-bar-closer">
+            <button class="btn"><i class="fa fa-close"></i></button>
+        </div>
+
+        <!-- Hidden Bar Wrapper -->
+        <div class="hidden-bar-wrapper">
+
+            <!-- .logo -->
+            <div class="logo text-center">
+                <a href="index.html"><img src="images/logo-2.png" alt=""></a>
+            </div><!-- /.logo -->
+
+            <!-- .Side-menu -->
+            <div class="side-menu">
+            <!-- .navigation -->
+                <ul class="navigation">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown"><a href="#">About Us</a>
+                        <ul>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="our-team.html">Our Team</a></li>
+                            <li><a href="team-single.html">Team Single</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#">Services</a>
+                        <ul class="submenu">
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="service-single.html">Services Single</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#">Projects</a>
+                        <ul class="submenu">
+                            <li><a href="portfolio-default.html">Projects Standard</a></li>
+                            <li><a href="portfolio-fullwidth.html">Projects Fullwidth</a></li>
+                            <li><a href="portfolio-with-text.html">Projects With Text</a></li>
+                            <li><a href="portfolio-single-one.html">Projects Single 01</a></li>
+                            <li><a href="portfolio-single-two.html">Projects Single 02</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown current"><a href="#">Blog</a>
+                        <ul class="submenu">
+                            <li><a href="blog1.html">Blog Standard</a></li>
+                            <li><a href="blog-large-image1.html">Blog large Image</a></li>
+                            <li><a href="blog-single1.html">Blog Single</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown"><a href="#">Shop</a>
+                        <ul class="submenu">
+                            <li><a href="shop.html">Shop Products</a></li>
+                            <li><a href="shop-single.html">Shop Single</a></li>
+                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                            <li><a href="register.html">Login / Register</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown"><a href="#">Pages</a>
+                        <ul class="submenu">
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="our-team.html">Our Team</a></li>
+                            <li><a href="team-single.html">Team Single</a></li>
+                            <li><a href="pricing.html">Pricing Table</a></li>
+                            <li><a href="faqs.html">FAQ's</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div><!-- /.Side-menu -->
+
+            <div class="social-icons">
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+
+        </div><!-- / Hidden Bar Wrapper -->
+    </section>
+    <!-- / Hidden Bar -->
+
+
+    {% block right %}
+        <section class="page-title" >
+            <div class="auto-container">
+                <h1>Blog Standard</h1>
+            </div>
+        </section>
+
+        <!--Page Info-->
+        <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>Blog Standard</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog1.html">Blog</a></li>
+                    <li>Blog Standard</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
+    <!--Page Title-->
+
+    <!--Sidebar Page-->
+    <div class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+                 <!-- 左部分 -->
+
+                {% block leftcontent %}
+                {% endblock %}
+                <!--Sidebar 右侧导航-->
+                <div class="sidebar-side col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <aside class="sidebar">
+
+                        <!-- Search Form -->
+                        <div class="widget search-box sidebar-widget">
+
+                            <form action="{% url 'blog:search' %}" role='search' method="get" id='searchform'>
+                                <div class="form-group">
+                                    <input type="search" name="q" value="" placeholder="Search Keyword">
+                                    <button type="submit"><span class="icon fa fa-search"></span></button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <!-- Popular Categories -->
+                        <div class="widget popular-categories sidebar-widget">
+                            <div class="sidebar-title"><h3>Blog Categories</h3></div>
+
+                            <ul class="list">
+                                {% for t in types %}
+                                    <li><a href="{% url 'blog:see' %}?type=type&value={{ t.id }} ">{{ t.tName }}</a></li>
+                                {% endfor %}
+
+{#                                <li><a href="#">Texture Painting</a></li>#}
+{#                                <li><a href="#">Wooden Flooring</a></li>#}
+{#                                <li><a href="#">Artificial Grass Flooring</a></li>#}
+{#                                <li><a href="#">Tiles &amp; Marble Works</a></li>#}
+                            </ul>
+
+                        </div>
+
+                        <!-- Recent Posts -->
+                        <div class="widget recent-posts sidebar-widget">
+                            <div class="sidebar-title"><h3>Popular Posts</h3></div>
+                            {% for a in hot_arls %}
+                                <div class="post">
+                                <figure class="post-thumb">
+                                    <img src="/static/media/{{ a.aBackgroundImage }}" alt="配图" style="width: 65px;height: 65px;">
+                                    <a href="{% url 'blog:single' a.id %}" class="overlay-link">
+                                        <span class="flaticon-plus-1"></span>
+                                    </a>
+                                </figure>
+                                <h4><a href="{% url 'blog:single' a.id %}">{{ a.aTitle }}</a></h4>
+                                <div class="post-meta"><a href="#"><span class="fa fa-user"></span> {{ a.aAuthor.uName }}</a>
+                                    <a><span class="fa fa-eye"></span> {{ a.aReadNum }} Views</a></div>
+                            </div>
+                            {% empty %}
+                                none
+                            {% endfor %}
+
+
+
+{#                            <div class="post">#}
+{#                                <figure class="post-thumb"><img src="images/resource/post-thumb-4.jpg" alt=""><a href="#" class="overlay-link"><span class="flaticon-plus-1"></span></a></figure>#}
+{#                                <h4><a href="#">Star Wood Residence is Our First Work</a></h4>#}
+{#                                <div class="post-meta"><a href="#"><span class="fa fa-user"></span> Henry</a> <a href="#"><span class="fa fa-eye"></span> 110 Views</a></div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="post">#}
+{#                                <figure class="post-thumb"><img src="images/resource/post-thumb-5.jpg" alt=""><a href="#" class="overlay-link"><span class="flaticon-plus-1"></span></a></figure>#}
+{#                                <h4><a href="#">We Launch New Concept For Lighting</a></h4>#}
+{#                                <div class="post-meta"><a href="#"><span class="fa fa-user"></span> Williams</a> <a href="#"><span class="fa fa-eye"></span> 31 Views</a></div>#}
+{#                            </div>#}
+
+                        </div>
+
+                        <!-- Archives -->
+                        <div class="widget archives sidebar-widget">
+                            <div class="sidebar-title"><h3>Blog Archive</h3></div>
+
+                            <ul class="list-two">
+                                {% for foo in guidang %}
+                                    <li><a href="{% url 'blog:see' %}?type=date&value={{ foo }}"> {{ foo }}</a></li>
+                                {% endfor %}
+
+{#                                <li><a href="#">August 2013 &ensp; (5)</a></li>#}
+{#                                <li><a href="#">December 2013 &ensp; (12)</a></li>#}
+{#                                <li><a href="#">January 2014 &ensp; (10)</a></li>#}
+{#                                <li><a href="#">September 2014 &ensp; (17)</a></li>#}
+                            </ul>
+
+                        </div>
+
+                        <!-- Archives -->
+                        <div class="widget text-widget sidebar-widget">
+                            <div class="sidebar-title"><h3>Text Widget</h3></div>
+
+                            <div class="text">
+                            	<p>We know give much more satisfaction to our customers, with high quality products and great services. </p>
+                                <p>We Decorators is the leading interior design organization in <a href="#">USA</a>. We doing this service with great experince and High knowledge <a href="#">Experts</a>. </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Popular Tags -->
+                        <div class="widget sidebar-widget popular-tags">
+                            <div class="sidebar-title"><h3>Popular Tags</h3></div>
+                            {% for tag in tags %}
+                                <a href="{% url 'blog:see' %}?type=tag&value={{ tag.id }}">{{ tag.tName }}</a>
+                            {% endfor %}
+{#                            <a href="#">Furniture</a>#}
+{#                            <a href="#">Wood</a>#}
+{#                            <a href="#">Lighting</a>#}
+{#                            <a href="#">Artificial Grass</a>#}
+{#                            <a href="#">Painting</a>#}
+{#                            <a href="#">Curtains</a>#}
+{#                            <a href="#">Tile &amp; Marble</a>#}
+                        </div>
+
+                    </aside>
+                </div><!--End Sidebar-->
+
+            </div>
+        </div>
+    </div>
+
+{#    </div>#}
+{% endblock %}

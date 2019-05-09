@@ -1,0 +1,27 @@
+{% extends 'blog/base_index.html' %}
+
+
+{% block title %}
+login
+{% endblock %}
+form{
+    text-align: center;
+}
+
+{% block stylesheel %}
+{% endblock %}
+
+
+{% block blog %}
+    <div style="width: 1000px; margin: 200px auto">
+        <form action="#" method="post" class="form-horizontal">
+            {% csrf_token %}
+            请输入您的账户：<input type="text" name="name" class="text form-control">
+            <br>
+            请输入您的密码：<input type="password" name="pwd" class="form-control " id="inputPassword3">
+            <br>
+            <input type="submit" value="提交" class="btn ">
+        </form>
+        <br>还没有账号？<a href="{% url 'blog:register' %}">注册</a>
+    </div>
+{% endblock %}

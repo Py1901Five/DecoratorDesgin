@@ -1,0 +1,195 @@
+{% extends 'furnitureapp/base.html' %}
+
+{% block body %}
+    <!--Gallery Section-->
+    <section class="gallery-section">
+    	<div class="auto-container">
+
+            <!--Sortable Masonry-->
+            <div class="sortable-masonry">
+                <!--Filter-->
+                <div class="filters text-center">
+                <div class="icon-box"><span class="fa fa-picture-o"></span></div>
+
+                    <ul class="filter-tabs filter-btns clearfix">
+                        <li class="active filter" data-role="button" data-filter=".all">All Projects</li>
+                        {% for cls in classifies %}
+                        <li class="filter" data-role="button" data-filter=".{{ cls.classify.lower }}">{{ cls.classify }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+
+
+
+                <div class="items-container clearfix">
+ {% for img in indeximgs %}
+                    <!--Default Portfolio Item-->
+                {% if img.indexn == 1 %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 default-portfolio-item masonry-item all tile-marble">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'furnitureapp:defalut' img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="{% url 'furnitureapp:defalut' img.id %}">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!--Default Portfolio Item-->
+                    {% if img.indexn == 2 %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 default-portfolio-item masonry-item all tile-marble lighting">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'furnitureapp:defalut' img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="{% url 'furnitureapp:defalut' img.id %}">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <!--Default Portfolio Item-->
+                {% if img.indexn == 3 %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 default-portfolio-item masonry-item all flooring tile-marble furniture lighting">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'furnitureapp:defalut' img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="{% url 'furnitureapp:defalut' img.id %}">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <!--Default Portfolio Item-->
+                {% if img.indexn == 4 %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 default-portfolio-item masonry-item all painting flooring furniture">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'furnitureapp:defalut' img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="{% url 'furnitureapp:defalut' img.id %}">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <!--Default Portfolio Item-->
+                {% if img.indexn == 5 %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 default-portfolio-item masonry-item all painting tile-marble furniture lighting">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'furnitureapp:defalut' img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="{% url 'furnitureapp:defalut' img.id %}">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <!--Default Portfolio Item-->
+                {% if img.indexn == 6 %}
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 default-portfolio-item masonry-item all painting flooring tile-marble">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="{% url 'furnitureapp:defalut' img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="{% url 'furnitureapp:defalut' img.id %}">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                    <!--Default Portfolio Item-->
+                {% if img.indexn == 7 %}
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 default-portfolio-item masonry-item all flooring furniture lighting">
+                        <div class="inner-box">
+                            <figure class="image-box"><img src="/static/media/{{ img.img.name }}" alt=""></figure>
+                            <!--Overlay Box-->
+                            <div class="overlay-one">
+                                <div class="overlay-inner">
+                                    <div class="content">
+                                        <a href="" class="proj-link"><span class="fa fa-link"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Caption Box-->
+                            <div class="caption-box-one">
+                            	<h3><a href="">Living Room</a></h3>
+                                <a href="#" class="cat-link">Painting</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endif %}
+                {% endfor %}
+
+                </div>
+
+
+            </div><!--End Sortable Masonry-->
+
+            <div class="text-center padd-top-50"><a class="theme-btn btn-style-two" href="">More Projects</a></div>
+
+        </div>
+
+
+
+    </section>
+{% endblock %}

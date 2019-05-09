@@ -1,0 +1,81 @@
+{% extends 'furnitureapp/base.html' %}
+{% block page %}Projects With Text{% endblock %}
+{% block body %}
+ <!--Gallery Section-->
+    <section class="gallery-section portfolio-with-caption">
+         <div class="auto-container">
+            <!--Mixituo Gallery-->
+            <div class="mixitup-gallery">
+                <!--Filter-->
+                <div class="filters text-center">
+                	<div class="icon-box"><span class="fa fa-picture-o"></span></div>
+
+                    <ul class="filter-tabs filter-btns clearfix">
+                        <li class="active filter" data-role="button" data-filter="all">All Projects</li>
+                        {% for cls in classify %}
+                        <li class="filter" data-role="button" data-filter=".{{ cls.classify.lower }}">{{ cls.classify }}</li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+
+                <div class="filter-list row clearfix">
+
+                    <!--Default Portfolio Item-->
+                    {% for imgtext in textimg %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 default-portfolio-item mix mix_all all {{ imgtext.fyr.classify.lower }}">
+                        <div class="inner-box">
+                            <figure class="image-box">
+                            	<img src="/static/media/{{ imgtext.img }}" alt="">
+                            	<!--Overlay Box-->
+                                <div class="overlay-one">
+                                    <div class="overlay-inner">
+                                        <div class="content">
+                                            <a href="{% url 'furnitureapp:singletwo' 2 imgtext.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </figure>
+
+                            <!--Caption Box-->
+                            <div class="caption-box-two">
+                                <h3><a href="portfolio-single-two.html">{{ imgtext.tag }}</a></h3>
+                                <div class="cat-links"><a href="#">{{ imgtext.deti }}</a> </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div><!--End Mixituo Gallery-->
+
+            <!-- Styled Pagination -->
+            <div class="pagination-simple">
+                    {% if page.object_list %}
+                        {% if page.has_previous %}
+                            <a href="?page={{page.previous_page_number}}">上一页</a>
+                            <a href="?page={{page.number|add:-1}}">{{page.number|add:-1}}</a>
+                        {% endif %}
+                        <span class="current">第 {{page.number}} 页 / 共 {{page.paginator.num_pages}} 页</span>
+                         {% if page.has_next %}
+                             <a href="?page={{page.number|add:1}}">{{page.number|add:1}}</a>
+                            <a href="?page={{page.next_page_number}}">下一页</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+        </div>
+    </section>
+{% endblock %}
+{% block link %}
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/static/js/jquery.fancybox.pack.js"></script>
+<script src="/static/js/jquery.fancybox-media.js"></script>
+<script src="/static/js/owl.js"></script>
+<script src="/static/js/mixitup.js"></script>
+<script src="/static/js/wow.js"></script>
+<script src="/static/js/script.js"></script>
+{% endblock %}

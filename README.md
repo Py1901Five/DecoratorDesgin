@@ -1,2 +1,2 @@
-# DecoratorDesgin
-最终版
+# Decorator
+家具设计网站, 主要功能：首页家具展示、企业、商城、博客、项目。

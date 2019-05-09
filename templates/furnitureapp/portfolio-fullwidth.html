@@ -1,0 +1,63 @@
+{% extends 'furnitureapp/base.html' %}
+{% block page %}Projects Fullwidth{% endblock %}
+{% block body %}
+ <!--Gallery Section-->
+    <section class="gallery-section fullwidth">
+
+        <!--Mixituo Gallery-->
+        <div class="mixitup-gallery">
+            <!--Filter-->
+            <div class="filters text-center">
+            <div class="icon-box"><span class="fa fa-picture-o"></span></div>
+
+                <ul class="filter-tabs filter-btns clearfix">
+                    <li class="active filter" data-role="button" data-filter="all">All Projects</li>
+                    {% for cls in classify %}
+                    <li class="filter" data-role="button" data-filter=".{{ cls.classify.lower }}">{{ cls.classify }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="filter-list clearfix">
+                {% for img in wpics %}
+
+                <!--Default Portfolio Item-->
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 default-portfolio-item mix mix_all all {{ img.fyr.classify.lower }}">
+                    <div class="inner-box">
+                        <figure class="image-box"><img src="/static/media/{{ img.fullpic }}" alt=""></figure>
+                        <!--Overlay Box-->
+                        <div class="overlay-one">
+                            <div class="overlay-inner">
+                                <div class="content">
+                                    <a href="{% url 'furnitureapp:singletwo' 2 img.id %}" class="proj-link"><span class="fa fa-link"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Caption Box-->
+                        <div class="caption-box-one">
+                            <h3><a href="{% url 'furnitureapp:singletwo' 2 img.id %}">Wooden Sofa</a></h3>
+                            <div class="cat-links"><a href="#">Furniture</a> , <a href="#">Lighting</a></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div><!--End Mixituo Gallery-->
+
+        <div class="text-center padd-top-70"><a class="theme-btn btn-style-two" href="portfolio-standard.html">Load More</a></div>
+
+    </section>
+{% endblock %}
+{% block link %}
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/static/js/jquery.fancybox.pack.js"></script>
+<script src="/static/js/jquery.fancybox-media.js"></script>
+<script src="/static/js/owl.js"></script>
+<script src="/static/js/mixitup.js"></script>
+<script src="/static/js/wow.js"></script>
+<script src="/static/js/script.js"></script>
+{% endblock %}

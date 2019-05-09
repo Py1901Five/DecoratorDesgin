@@ -1,0 +1,95 @@
+{% extends 'firm/base.html' %}
+
+{% block title %}
+    疑问解答页
+{% endblock %}
+
+{% block body %}
+    <section class="page-title" style="background-image:url(/static/images/background/bg-page-title-1.jpg);">
+        <div class="auto-container">
+            <h1>FAQ's</h1>
+        </div>
+    </section>
+
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>常见问题解答</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'firm:index' %}">Pages</a></li>
+                    <li>FAQ's</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="faqs-section">
+    	<div class="auto-container">
+
+            <div class="faqs-container">
+            	<!--Accordion Box-->
+                <ul class="accordion-box">
+
+                    {% for q in questions %}
+
+                        <li class="accordion block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="acc-btn">
+                            <div class="icon-outer">
+                                <span class="icon icon-plus fa fa-angle-right"></span>
+                                <span class="icon icon-minus fa fa-angle-down"></span>
+                            </div>{{ q.question }}
+                        </div>
+                        <div class="acc-content">
+                            <div class="content clearfix">
+                                <p>{{ q.message }} </p>
+                            </div>
+                        </div>
+                    </li>
+
+                    {% endfor %}
+
+
+                </ul>
+            </div>
+
+            <div class="sec-title medium">
+            	<h2>请输入问题</h2>
+            </div>
+
+            <div class="ask-questions">
+            	<!--form-box-->
+                <div class="form-box default-form">
+                    <div class="contact-form default-form">
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="row clearfix">
+
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="username" value="" placeholder="Your Name *" required>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <input type="email" name="email" value="" placeholder="Email Address *" required>
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="number" value="" placeholder="Phone">
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <textarea name="message" placeholder="Your Question"></textarea>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <button type="submit" class="theme-btn btn-style-two">请提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

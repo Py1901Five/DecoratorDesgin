@@ -1,0 +1,121 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+    登陆注册
+{% endblock %}
+
+{% block body %}
+<!--Page Title-->
+    <section class="page-title" style="background-image:url(/static/images/background/bg-page-title-1.jpg);">
+        <div class="auto-container">
+            <h1>Login / Register</h1>
+        </div>
+    </section>
+
+    <!--Page Info-->
+    <section class="page-info">
+        <div class="auto-container clearfix">
+            <div class="pull-left"><h2>Login / Register</h2></div>
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'firm:index' %}">Home</a></li>
+                    <li><a href="{% url 'shop:shop' %}">Shop</a></li>
+                    <li>Login / Register</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--Register Section-->
+    <section class="register-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+
+                <!--Form Column-->
+                <div class="form-column column col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    {% if failed %}
+                        <div class="sec-title medium">
+                            <h2>Login Now(账号或密码错误，请重新输入)</h2>
+                        </div>
+                    {% else %}
+                        <div class="sec-title medium">
+                            <h2>Login Now</h2>
+                        </div>
+                    {% endif %}
+
+
+                    <!--Login Form-->
+                    <div class="styled-form login-form">
+                        <form method="post" action="{% url 'shop:login' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <span class="adon-icon"><span class="fa fa-user"></span></span>
+                                <input type="text" name="username" value="" placeholder="Your Name *">
+                            </div>
+                            <div class="form-group">
+                                <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                                <input type="password" name="pwd" value="" placeholder="Enter Password">
+                            </div>
+                            <div class="clearfix">
+                                <div class="form-group pull-left">
+                                    <button type="submit" class="theme-btn btn-style-two">login</button>
+                                </div>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="pull-left">
+                                    <input type="checkbox" id="remember-me"><label for="remember-me">&nbsp; Remember Me</label>
+                                </div>
+{#                                <div class="pull-right">#}
+{#                                    <a href="#" class="forgot">Forgot Password?</a>#}
+{#                                </div>#}
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <!--Form Column-->
+                <div class="form-column column col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                    <div class="sec-title medium">
+                        <h2>Register Here</h2>
+                    </div>
+
+                    <!--Register Form-->
+                    <div class="styled-form register-form">
+                        <form method="post" action="{% url 'shop:register' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <span class="adon-icon"><span class="fa fa-user"></span></span>
+                                <input type="text" name="username" value="" placeholder="Your Name *">
+                            </div>
+                            <div class="form-group">
+                                <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
+                                <input type="email" name="email" value="" placeholder="Enter Mail id *">
+                            </div>
+                            <div class="form-group">
+                                <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                                <input type="password" name="pwd" value="" placeholder="Enter Password">
+                            </div>
+                            <div class="clearfix">
+                                <div class="form-group pull-left">
+                                    <button type="submit" class="theme-btn btn-style-two">Register</button>
+                                </div>
+                                <div class="form-group padd-top-10 pull-right">
+                                    * You must be a free registered user to submit content.
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
